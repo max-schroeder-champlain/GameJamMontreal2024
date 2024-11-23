@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5971190471584987329
+--- !u!1001 &9139544860325202819
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa04025596dbdf5439b7901a201cd394, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa04025596dbdf5439b7901a201cd394, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa04025596dbdf5439b7901a201cd394, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
