@@ -19,6 +19,8 @@ public class BoxScript : MonoBehaviour
     private bool Moving = false;
 
     private float speed = 5;
+
+    public GameObject VFXprefab;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -101,11 +103,17 @@ public class BoxScript : MonoBehaviour
     {
         if (!Moving) return;
         transform.position = Vector3.Lerp(this.transform.position, StartPos, Time.deltaTime * speed);
-        if(Vector3.Distance(transform.position, StartPos) <= 0.01f)
+        if (Vector3.Distance(transform.position, StartPos) <= 0.01f)
         {
             Moving = false;
             SetHeld();
         }
-            
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            Instantiate(VFXprefab, collision.contacts[0].point, Quaternion.identity);
+        }
     }
 }

@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setToMouse: 0
+  VFXprefab: {fileID: 3464233567138135920, guid: e8dcdaf210637024b93901b853abb413, type: 3}
