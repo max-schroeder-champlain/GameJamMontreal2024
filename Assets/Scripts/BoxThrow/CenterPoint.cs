@@ -11,6 +11,7 @@ public class CenterPoint : MonoBehaviour
     public float LoosenedTolerance = 10;
     public Vector3 CenterPos = Vector3.zero;
     public CreateNewBox CreateNewBox = null;
+    public float TimeToWait = 1.5f;
     private void OnEnable()
     {
         if(instance == null)
@@ -37,6 +38,10 @@ public class CenterPoint : MonoBehaviour
         CenterPos = transform.position;
         Debug.Log(CenterPos);
     }
+    private void Start()
+    {
+        StartCoroutine(WaitForNewSpawn());
+    }
     public void SetCurrentlyHeld(GameObject toSet)
     {
         if (CurrentlyHeld != null) return;
@@ -48,6 +53,8 @@ public class CenterPoint : MonoBehaviour
     {
         spring.connectedBody = null;
         CurrentlyHeld = null;
+        TightenSpring();
+        StartCoroutine(WaitForNewSpawn());
     }
     public void LoosenSpring()
     {
@@ -56,7 +63,14 @@ public class CenterPoint : MonoBehaviour
     }
     public void TightenSpring()
     {
-        spring.maxDistance = 0.25f;
+        spring.maxDistance = 0f;
         spring.tolerance = startingTolerance;
     }
+
+    private IEnumerator WaitForNewSpawn()
+    {
+        yield return new WaitForSeconds(TimeToWait);
+        if(CreateNewBox != null)
+            CreateNewBox.CreateBox();
+    }    
 }

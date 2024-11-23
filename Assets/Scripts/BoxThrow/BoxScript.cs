@@ -14,13 +14,20 @@ public class BoxScript : MonoBehaviour
     private float UpOffset = 0.25f;
     private bool canBeClicked = true;
     private float timeBeforeDestroy = 1.5f;
+
+    private Vector3 StartPos = Vector3.zero;
+    private bool Moving = false;
+
+    private float speed = 5;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+    private void SetHeld()
+    {
         CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
         rb.useGravity = true;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -62,10 +69,6 @@ public class BoxScript : MonoBehaviour
             Debug.Log("Up");
             ThrowUp();
         }
-        else
-        {
-            CenterPoint.instance.TightenSpring();
-        }
         
     }
     private void ThrowUp()
@@ -91,10 +94,18 @@ public class BoxScript : MonoBehaviour
     }
     public void MoveToStart(Vector3 startPos)
     {
-
+        StartPos = startPos;
+        Moving = true;
     }
     private void MoveTo()
     {
-
+        if (!Moving) return;
+        transform.position = Vector3.Lerp(this.transform.position, StartPos, Time.deltaTime * speed);
+        if(Vector3.Distance(transform.position, StartPos) <= 0.01f)
+        {
+            Moving = false;
+            SetHeld();
+        }
+            
     }
 }
