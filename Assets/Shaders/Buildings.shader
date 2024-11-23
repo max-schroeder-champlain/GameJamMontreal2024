@@ -199,7 +199,7 @@ Shader "Buildings"
 /*ASEBEGIN
 Version=19302
 Node;AmplifyShaderEditor.RangedFloatNode;2;-1254,195.5;Inherit;False;Property;_AlbedoSize;Albedo Size;0;0;Create;True;0;0;0;False;0;False;1;0.33;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TexturePropertyNode;10;-1438.193,-104.7381;Inherit;True;Property;_BaseColor;Base Color;4;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;10;-1438.193,-104.7381;Inherit;True;Property;_BaseColor;Base Color;4;0;Create;True;0;0;0;False;0;False;None;0872a4292a482a4478d72966caee9f9a;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.RangedFloatNode;3;-741.8365,535.7957;Inherit;False;Property;_OutlineBrightness;Outline Brightness;1;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TriplanarNode;1;-995,47.5;Inherit;True;Spherical;World;False;Triplanar Sample Albedo;_TriplanarSampleAlbedo;white;0;None;Mid Texture 0;_MidTexture0;white;-1;None;Bot Texture 0;_BotTexture0;white;-1;None;Triplanar Sampler;Tangent;10;0;SAMPLER2D;;False;5;FLOAT;1;False;1;SAMPLER2D;;False;6;FLOAT;0;False;2;SAMPLER2D;;False;7;FLOAT;0;False;9;FLOAT3;0,0,0;False;8;FLOAT;1;False;3;FLOAT2;1,1;False;4;FLOAT;10;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;9;-1101.423,-221.2084;Inherit;True;Property;_NonTriplanarSample;NonTriplanar Sample;5;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -224,4 +224,4 @@ WireConnection;7;1;12;0
 WireConnection;0;0;7;0
 WireConnection;0;11;6;0
 ASEEND*/
-//CHKSM=29DBA89A96EB0B0D69B3DAE9AEB04FFD745978B5
+//CHKSM=533956A796230C62A42D83E00B1D17F85DC779AE
