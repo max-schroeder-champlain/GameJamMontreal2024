@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
-
-    // Update is called once per frame
     void Update()
     {
         GetMousePos();

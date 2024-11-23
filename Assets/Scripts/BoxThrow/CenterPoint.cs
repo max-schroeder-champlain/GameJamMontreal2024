@@ -10,6 +10,7 @@ public class CenterPoint : MonoBehaviour
     private float startingTolerance = 0;
     public float LoosenedTolerance = 10;
     public Vector3 CenterPos = Vector3.zero;
+    public CreateNewBox CreateNewBox = null;
     private void OnEnable()
     {
         if(instance == null)

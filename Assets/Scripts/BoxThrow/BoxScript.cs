@@ -12,6 +12,8 @@ public class BoxScript : MonoBehaviour
 
     private float LeftOffset = -0.5f;
     private float UpOffset = 0.25f;
+    private bool canBeClicked = true;
+    private float timeBeforeDestroy = 1.5f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,6 +26,7 @@ public class BoxScript : MonoBehaviour
     {
         mousePos = GameManager.Instance.mousePos;
         FollowMouse();
+        MoveTo();
     }
     private void FollowMouse()
     {
@@ -32,6 +35,7 @@ public class BoxScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if(!canBeClicked) return; 
         offset = transform.position - mousePos;
         setToMouse = true;
         CenterPoint.instance.LoosenSpring();
@@ -70,12 +74,27 @@ public class BoxScript : MonoBehaviour
         Debug.Log("Velocity " + rb.velocity);
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
         rb.AddForce(new Vector3(0, 0, 500));
+        canBeClicked = false;
     }
     private void ThrowLeft()
     {
         CenterPoint.instance.ReleaseHeld();
         rb.velocity = new Vector3(-(rb.velocity.x+7), rb.velocity.y, rb.velocity.z);
         Debug.Log("Left " + rb.velocity);
-        
+        canBeClicked = false;
+        StartCoroutine(ToBeDeleted());
+    }
+    private IEnumerator ToBeDeleted()
+    {
+        yield return new WaitForSeconds(timeBeforeDestroy);
+        Destroy(this.gameObject);
+    }
+    public void MoveToStart(Vector3 startPos)
+    {
+
+    }
+    private void MoveTo()
+    {
+
     }
 }
