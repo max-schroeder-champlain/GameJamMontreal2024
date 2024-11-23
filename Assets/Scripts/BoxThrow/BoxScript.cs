@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using UnityEngine.Rendering;
 [RequireComponent(typeof(Rigidbody))]
 public class BoxScript : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class BoxScript : MonoBehaviour
 
     private float LeftOffset = -0.5f;
     private float UpOffset = 0.25f;
-    private bool canBeClicked = true;
+    private bool canBeClicked = false;
     private float timeBeforeDestroy = 1.5f;
 
     private Vector3 StartPos = Vector3.zero;
@@ -21,6 +22,10 @@ public class BoxScript : MonoBehaviour
     private float speed = 5;
 
     public GameObject VFXprefab;
+    public bool IsCat = false;
+
+    private Vector3 lastPos = Vector3.zero; 
+    private bool thrown = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,6 +41,18 @@ public class BoxScript : MonoBehaviour
         mousePos = GameManager.Instance.mousePos;
         FollowMouse();
         MoveTo();
+        CheckShake();
+        lastPos = mousePos;
+    }
+    private void CheckShake()
+    {
+        if (!setToMouse) return;
+        if(!IsCat) return;
+        if(Vector3.Distance(lastPos, mousePos) > 0.4f)
+        {
+            Debug.Log("Shaking");
+            //Play Meow Sound
+        }
     }
     private void FollowMouse()
     {
@@ -47,11 +64,10 @@ public class BoxScript : MonoBehaviour
         if(!canBeClicked) return; 
         offset = transform.position - mousePos;
         setToMouse = true;
-        CenterPoint.instance.LoosenSpring();
+        CenterPoint.instance.ReleaseHeld();
     }
     private void OnMouseUp()
-    {
-        
+    {   
         setToMouse = false;
         CheckVelocity(rb.velocity);
     }
@@ -63,23 +79,31 @@ public class BoxScript : MonoBehaviour
         Debug.Log("UpOffset = " + (pos.y+UpOffset));
         if (transform.position.x <= pos.x + LeftOffset)
         {
+            thrown = true;
             Debug.Log("Left");
             ThrowLeft();
         }
-        else if (transform.position.y >= pos.y + UpOffset)
+        if (transform.position.y >= pos.y + UpOffset)
         {
+            thrown = true;
             Debug.Log("Up");
             ThrowUp();
         }
-        
+        if(!thrown)
+        {
+            CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
+        }
+        //USE DOT-----------------------------------------------------------------------
+        Debug.Log(Vector3.Dot(velocity.normalized, Vector3.up));
     }
     private void ThrowUp()
     {
-        CenterPoint.instance.ReleaseHeld();
+
         Debug.Log("Velocity " + rb.velocity);
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
         rb.AddForce(new Vector3(0, 0, 500));
         canBeClicked = false;
+        CenterPoint.instance.StartTimer();
     }
     private void ThrowLeft()
     {
@@ -88,6 +112,7 @@ public class BoxScript : MonoBehaviour
         Debug.Log("Left " + rb.velocity);
         canBeClicked = false;
         StartCoroutine(ToBeDeleted());
+        CenterPoint.instance.StartTimer();
     }
     private IEnumerator ToBeDeleted()
     {
@@ -106,6 +131,7 @@ public class BoxScript : MonoBehaviour
         if (Vector3.Distance(transform.position, StartPos) <= 0.01f)
         {
             Moving = false;
+            canBeClicked = true;
             SetHeld();
         }
     }

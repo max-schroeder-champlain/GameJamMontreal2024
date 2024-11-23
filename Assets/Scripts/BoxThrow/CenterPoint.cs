@@ -53,7 +53,11 @@ public class CenterPoint : MonoBehaviour
     {
         spring.connectedBody = null;
         CurrentlyHeld = null;
-        TightenSpring();
+        //TightenSpring();
+        
+    }
+    public void StartTimer()
+    {
         StartCoroutine(WaitForNewSpawn());
     }
     public void LoosenSpring()

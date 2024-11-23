@@ -15,5 +15,14 @@ public class CreateNewBox : MonoBehaviour
         GameObject temp = Instantiate(BoxPrefab, this.transform.position, Quaternion.identity);
         Vector3 pos = CenterPoint.instance.CenterPos;
         temp.GetComponent<BoxScript>().MoveToStart(new Vector3(pos.x, pos.y - 0.5f, pos.z));
+        temp.GetComponent<BoxScript>().IsCat = RandomizeCat();
+    }
+    private bool RandomizeCat()
+    {
+        int rand = Random.Range(0, 9);
+        if( rand < 4)
+            return true;
+        else
+            return false;
     }
 }
