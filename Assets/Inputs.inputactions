@@ -1,0 +1,46 @@
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "ActionMap",
+            "id": "f2704e06-4d08-460e-b3ec-de07e72ba7f8",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "9f2fbc0a-60e8-41ae-aed9-5ed9f847e5ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "05d651cb-8e02-4af4-9aaa-789d058b7d86",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard/Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard/Mouse",
+            "bindingGroup": "Keyboard/Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
