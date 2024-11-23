@@ -62,6 +62,7 @@ MonoBehaviour:
   settings:
   - {fileID: -5461274403113109905}
   - {fileID: 3738853760563961381}
+  - {fileID: 4766437559372377456}
 --- !u!114 &3738853760563961381
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -111,3 +112,19 @@ MonoBehaviour:
   quality:
     overrideState: 0
     value: 2
+--- !u!114 &4766437559372377456
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6c0527911739643bd52d404754cd31, type: 3}
+  m_Name: ConvolutionFilterPPSSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
