@@ -13,7 +13,7 @@ public class BoxScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
-        //rb.useGravity = true;
+        rb.useGravity = true;
     }
 
     // Update is called once per frame
@@ -25,17 +25,48 @@ public class BoxScript : MonoBehaviour
     private void FollowMouse()
     {
         if (!setToMouse) return;
-        this.transform.position = mousePos;
+        this.transform.position = mousePos + offset;
     }
     private void OnMouseDown()
     {
-        Debug.Log("Grabbed");
         offset = transform.position - mousePos;
         setToMouse = true;
+        CenterPoint.instance.LoosenSpring();
     }
     private void OnMouseUp()
     {
-        Debug.Log("Released");
+        
         setToMouse = false;
+        CheckVelocity(rb.velocity);
+    }
+    private void CheckVelocity(Vector3 velocity)
+    {
+        Debug.Log(velocity);
+        if (velocity.x >= 2)
+        {
+            Debug.Log("Left");
+            ThrowLeft();
+        }
+        else if (velocity.y >= 2)
+        {
+            Debug.Log("Up");
+            ThrowUp();
+        }
+        else
+        {
+            CenterPoint.instance.TightenSpring();
+        }
+        
+    }
+    private void ThrowUp()
+    {
+        CenterPoint.instance.ReleaseHeld();
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y/2, rb.velocity.z*3);
+        rb.AddForce(new Vector3(0, -rb.velocity.y/2, 100));
+    }
+    private void ThrowLeft()
+    {
+        rb.velocity = new Vector3(-rb.velocity.x, rb.velocity.y, rb.velocity.z);
+        CenterPoint.instance.ReleaseHeld();
     }
 }

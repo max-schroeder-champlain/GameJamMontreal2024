@@ -155,10 +155,10 @@ SpringJoint:
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 3, z: -13}
   serializedVersion: 2
-  m_Spring: 100
+  m_Spring: 1000
   m_Damper: 1
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.25
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -414,7 +414,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.139, y: 3.139, z: 3.139}
+  m_LocalScale: {x: 27.027416, y: 27.027416, z: 27.027416}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -669,7 +669,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 64
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &8962551738928273044
 BoxCollider:

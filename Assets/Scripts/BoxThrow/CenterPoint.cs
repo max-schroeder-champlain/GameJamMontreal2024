@@ -7,7 +7,8 @@ public class CenterPoint : MonoBehaviour
     public static CenterPoint instance;
     public GameObject CurrentlyHeld = null;
     private SpringJoint spring = null;
-
+    private float startingTolerance = 0;
+    public float LoosenedTolerance = 10;
     private void OnEnable()
     {
         if(instance == null)
@@ -30,18 +31,26 @@ public class CenterPoint : MonoBehaviour
     void Awake()
     {
         spring = GetComponent<SpringJoint>();
+        startingTolerance = spring.tolerance;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetCurrentlyHeld(GameObject toSet)
     {
+        if (CurrentlyHeld != null) return;
         CurrentlyHeld = toSet;
         if(CurrentlyHeld.GetComponent<Rigidbody>() != null ) 
             spring.connectedBody = toSet.GetComponent<Rigidbody>();
+    }
+    public void ReleaseHeld()
+    {
+        spring.connectedBody = null;
+        CurrentlyHeld = null;
+    }
+    public void LoosenSpring()
+    {
+        spring.tolerance = LoosenedTolerance;
+    }
+    public void TightenSpring()
+    {
+        spring.tolerance = startingTolerance;
     }
 }
