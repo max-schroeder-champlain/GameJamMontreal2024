@@ -17,7 +17,7 @@ public class DialogueScript : MonoBehaviour
 
     private void Start()
     {
-        Name.text = CharacterName;
+        //Name.text = CharacterName;
         arrayMax = TextKeys.Length;
         TextManager.instance.SetCurrentDialogue(this); 
     }
@@ -32,7 +32,7 @@ public class DialogueScript : MonoBehaviour
     private IEnumerator Typewriting(string textToWrite)
     {
         typing = true; 
-        for (int i =0; i < textToWrite.Length; i++)
+        for (int i =0; i <= textToWrite.Length; i++)
         {
             DialogueText.text = textToWrite.Substring(0, i); 
             yield return new WaitForSeconds(delayTime);
