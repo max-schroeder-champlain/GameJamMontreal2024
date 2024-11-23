@@ -9,6 +9,7 @@ public class CenterPoint : MonoBehaviour
     private SpringJoint spring = null;
     private float startingTolerance = 0;
     public float LoosenedTolerance = 10;
+    public Vector3 CenterPos = Vector3.zero;
     private void OnEnable()
     {
         if(instance == null)
@@ -32,6 +33,8 @@ public class CenterPoint : MonoBehaviour
     {
         spring = GetComponent<SpringJoint>();
         startingTolerance = spring.tolerance;
+        CenterPos = transform.position;
+        Debug.Log(CenterPos);
     }
     public void SetCurrentlyHeld(GameObject toSet)
     {
@@ -47,10 +50,12 @@ public class CenterPoint : MonoBehaviour
     }
     public void LoosenSpring()
     {
+        spring.maxDistance = LoosenedTolerance;
         spring.tolerance = LoosenedTolerance;
     }
     public void TightenSpring()
     {
+        spring.maxDistance = 0.25f;
         spring.tolerance = startingTolerance;
     }
 }

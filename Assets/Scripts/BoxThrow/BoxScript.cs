@@ -9,6 +9,9 @@ public class BoxScript : MonoBehaviour
     public bool setToMouse = false;
     private Vector3 mousePos;
     private Vector3 offset = Vector3.zero;
+
+    private float LeftOffset = -0.5f;
+    private float UpOffset = 0.25f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,13 +44,16 @@ public class BoxScript : MonoBehaviour
     }
     private void CheckVelocity(Vector3 velocity)
     {
-        Debug.Log(velocity);
-        if (velocity.x >= 2)
+        Vector3 pos = CenterPoint.instance.CenterPos;
+        Debug.Log(transform.position);
+        
+        Debug.Log("UpOffset = " + (pos.y+UpOffset));
+        if (transform.position.x <= pos.x + LeftOffset)
         {
             Debug.Log("Left");
             ThrowLeft();
         }
-        else if (velocity.y >= 2)
+        else if (transform.position.y >= pos.y + UpOffset)
         {
             Debug.Log("Up");
             ThrowUp();
@@ -61,12 +67,15 @@ public class BoxScript : MonoBehaviour
     private void ThrowUp()
     {
         CenterPoint.instance.ReleaseHeld();
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y/2, rb.velocity.z*3);
-        rb.AddForce(new Vector3(0, -rb.velocity.y/2, 100));
+        Debug.Log("Velocity " + rb.velocity);
+        rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
+        rb.AddForce(new Vector3(0, 0, 500));
     }
     private void ThrowLeft()
     {
-        rb.velocity = new Vector3(-rb.velocity.x, rb.velocity.y, rb.velocity.z);
         CenterPoint.instance.ReleaseHeld();
+        rb.velocity = new Vector3(-(rb.velocity.x+7), rb.velocity.y, rb.velocity.z);
+        Debug.Log("Left " + rb.velocity);
+        
     }
 }
