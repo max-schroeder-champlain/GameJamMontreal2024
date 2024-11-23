@@ -25,6 +25,7 @@ public class BoxScript : MonoBehaviour
     public bool IsCat = false;
 
     private Vector3 lastPos = Vector3.zero; 
+    private bool thrown = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -52,7 +53,6 @@ public class BoxScript : MonoBehaviour
             Debug.Log("Shaking");
             //Play Meow Sound
         }
-        
     }
     private void FollowMouse()
     {
@@ -64,7 +64,7 @@ public class BoxScript : MonoBehaviour
         if(!canBeClicked) return; 
         offset = transform.position - mousePos;
         setToMouse = true;
-        CenterPoint.instance.LoosenSpring();
+        CenterPoint.instance.ReleaseHeld();
     }
     private void OnMouseUp()
     {   
@@ -79,22 +79,31 @@ public class BoxScript : MonoBehaviour
         Debug.Log("UpOffset = " + (pos.y+UpOffset));
         if (transform.position.x <= pos.x + LeftOffset)
         {
+            thrown = true;
             Debug.Log("Left");
             ThrowLeft();
         }
-        else if (transform.position.y >= pos.y + UpOffset)
+        if (transform.position.y >= pos.y + UpOffset)
         {
+            thrown = true;
             Debug.Log("Up");
             ThrowUp();
         }
+        if(!thrown)
+        {
+            CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
+        }
+        //USE DOT-----------------------------------------------------------------------
+        Debug.Log(Vector3.Dot(velocity.normalized, Vector3.up));
     }
     private void ThrowUp()
     {
-        CenterPoint.instance.ReleaseHeld();
+
         Debug.Log("Velocity " + rb.velocity);
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
         rb.AddForce(new Vector3(0, 0, 500));
         canBeClicked = false;
+        CenterPoint.instance.StartTimer();
     }
     private void ThrowLeft()
     {
@@ -103,6 +112,7 @@ public class BoxScript : MonoBehaviour
         Debug.Log("Left " + rb.velocity);
         canBeClicked = false;
         StartCoroutine(ToBeDeleted());
+        CenterPoint.instance.StartTimer();
     }
     private IEnumerator ToBeDeleted()
     {
