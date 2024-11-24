@@ -3977,7 +3977,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4090,6 +4090,17 @@ MonoBehaviour:
   - House10
   typing: 0
   box: {fileID: 546423016}
+  audioclips:
+  - {fileID: 8300000, guid: 449fecffdd974a849872066d583eb414, type: 3}
+  - {fileID: 8300000, guid: ef954e2aee7373f47badabb95d22603b, type: 3}
+  - {fileID: 8300000, guid: 5c7085b343404f041be7f1073c53d42c, type: 3}
+  - {fileID: 8300000, guid: 67d2d4678e4f85641a0c1e810ff93c5e, type: 3}
+  - {fileID: 8300000, guid: b9db009365379bc47b98f165aeb83c15, type: 3}
+  - {fileID: 8300000, guid: 0923d9ea76bf0d44d862b41f69816257, type: 3}
+  - {fileID: 8300000, guid: 0d358763335489e4e8e92be6e3cf7823, type: 3}
+  - {fileID: 8300000, guid: fae7504253937844e9d083aceb223c87, type: 3}
+  - {fileID: 8300000, guid: 2b483b8806b9a8a4ebe17b474a4da7fb, type: 3}
+  - {fileID: 8300000, guid: 6ccf0846ae8cbd84a8c5659bb4a373d6, type: 3}
 --- !u!1001 &317088686
 PrefabInstance:
   m_ObjectHideFlags: 0
