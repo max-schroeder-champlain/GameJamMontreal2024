@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public static Timer Instance;
     private float currentTime = 0;
-    TimeSpan time = TimeSpan.Zero;
+    public TimeSpan time = TimeSpan.Zero;
     private float PlayerScoreMultiplier;
 
     //ADJUST THIS TO CHANGE THE MAXIMUM SCORE MULTIPLIER
