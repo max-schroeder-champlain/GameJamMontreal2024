@@ -11,6 +11,18 @@ public class ScoreScript : MonoBehaviour
     //private int ScoreValue;
 
     public int Score;
+
+    private void OnEnable()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void Start()
     {
         StartCoroutine(ExampleCoroutine());
@@ -22,5 +34,10 @@ public class ScoreScript : MonoBehaviour
         Score = Score + (int) (100f *  Timer.Instance.ReturnScoreMultiplier());
         //Debug.Log(Score);
         StartCoroutine(ExampleCoroutine());
+    }
+
+    public int ReturnScore()
+    {
+        return Score;
     }
 }
