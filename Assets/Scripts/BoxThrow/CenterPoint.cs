@@ -89,5 +89,9 @@ public class CenterPoint : MonoBehaviour
         yield return new WaitForSeconds(TimeToWait);
         //if(CreateNewBox != null)
            // CreateNewBox.CreateBox();
-    }    
+    }  
+    public void CauseFire(bool isCat)
+    {
+        CreateNewBox.CauseFire(isCat);
+    }
 }
