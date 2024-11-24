@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 7d15186cf4e082042b008ddb08b78002, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 18f376bf0a8d0c74ba4b1a0029f59923, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3665,12 +3665,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279593822}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 4.7068987, y: 1.9218582, z: 2.1961482}
+  m_LocalRotation: {x: 0.36599827, y: 0.45315337, z: -0.21130888, w: 0.7848858}
+  m_LocalPosition: {x: -2.5107446, y: 3, z: -6.9030447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 605430708}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &281040671
 PrefabInstance:
@@ -8596,7 +8596,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 279593824}
   - {fileID: 1622076754}
   - {fileID: 460320765}
   - {fileID: 732424279}
@@ -8609,7 +8608,6 @@ Transform:
   - {fileID: 1199787203}
   - {fileID: 1763413607}
   - {fileID: 396864628}
-  - {fileID: 1009580611}
   - {fileID: 1719212527}
   - {fileID: 1838311956}
   - {fileID: 1508792774}
@@ -14242,12 +14240,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009580610}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.555172, y: -0.7435192, z: 42.893284}
+  m_LocalRotation: {x: -0, y: 0.70710635, z: -0, w: 0.7071073}
+  m_LocalPosition: {x: 38.18641, y: 0.33462262, z: -18.751272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 605430708}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1009580612
 MonoBehaviour:
@@ -31046,6 +31044,8 @@ SceneRoots:
   - {fileID: 3061135578518785636}
   - {fileID: 1647064108}
   - {fileID: 1669104630}
+  - {fileID: 279593824}
+  - {fileID: 1009580611}
   - {fileID: 2073388771}
   - {fileID: 605430708}
   - {fileID: 1000536233}
