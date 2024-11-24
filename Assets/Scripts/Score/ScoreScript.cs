@@ -28,8 +28,17 @@ public class ScoreScript : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        StartCoroutine(ExampleCoroutine());
+
+        //StartCoroutine(ExampleCoroutine());
         //SceneManager.LoadScene("ResultsScreen");
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     IEnumerator ExampleCoroutine()
