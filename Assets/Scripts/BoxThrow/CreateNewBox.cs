@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateNewBox : MonoBehaviour
 {
-    public GameObject BoxPrefab;
+    public GameObject[] BoxPrefabs;
     public RandomizeAudio fireSound;
     public Light fireLight;
     private AudioSource catSource;
@@ -22,7 +22,8 @@ public class CreateNewBox : MonoBehaviour
     }
     public void CreateBox()
     {
-        GameObject temp = Instantiate(BoxPrefab, this.transform.position, Quaternion.identity);
+        int rand = Random.Range(0, BoxPrefabs.Length);
+        GameObject temp = Instantiate(BoxPrefabs[rand], this.transform.position, Quaternion.identity);
         Vector3 pos = CenterPoint.instance.gameObject.transform.position;
         temp.GetComponent<BoxScript>().MoveToStart(new Vector3(pos.x, pos.y - 0.5f, pos.z));
         temp.GetComponent<BoxScript>().IsCat = RandomizeCat();

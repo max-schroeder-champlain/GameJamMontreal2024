@@ -253,7 +253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84655b35f5d708944a979ce0a8321933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoxPrefab: {fileID: 2793576135857623271, guid: e1af82a31876f554193b29be78705caa, type: 3}
+  BoxPrefabs:
+  - {fileID: 2793576135857623271, guid: e1af82a31876f554193b29be78705caa, type: 3}
+  - {fileID: 411636238327619423, guid: 30be80528290ace49946b0ed23d41906, type: 3}
+  - {fileID: 656156851659891351, guid: 33d7e3c899116c34b812eded59504cef, type: 3}
+  - {fileID: 2620774421182113197, guid: b0f8a7333baa7594ea7483c74dc5ee90, type: 3}
+  - {fileID: 1239156726633070496, guid: f7eaf94445bc85e488b411636b29d730, type: 3}
   fireSound: {fileID: 858419368193393060}
   fireLight: {fileID: 1779344128472317618}
   clips:
