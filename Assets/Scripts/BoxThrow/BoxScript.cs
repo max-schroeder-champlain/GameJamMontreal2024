@@ -73,7 +73,7 @@ public class BoxScript : MonoBehaviour
     {
         if (!setToMouse) return;
         if(!IsCat) return;
-        if(Vector3.Distance(lastPos, mousePos) > 0.4f)
+        if(Vector3.Distance(lastPos, mousePos) > 0.2f)
         {
             Debug.Log("Shaking");
             if(!audioSource.isPlaying)
@@ -119,7 +119,7 @@ public class BoxScript : MonoBehaviour
             thrown = true;
             ThrowLeft();
         }
-        if (dot >= .7f && !thrown)
+        if (vel.y >= .5f && !thrown)
         {
             thrown = true;
             ThrowUp();
