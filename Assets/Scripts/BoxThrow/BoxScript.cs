@@ -40,6 +40,7 @@ public class BoxScript : MonoBehaviour
     public GameObject handTwoPos = null;
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         RandomizeAudio();

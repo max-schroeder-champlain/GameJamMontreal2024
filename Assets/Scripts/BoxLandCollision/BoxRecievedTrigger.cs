@@ -27,7 +27,7 @@ public class TriggerEvent : MonoBehaviour
         {
             Debug.Log("HIT");
             OnTriggerEnterEvent.Invoke();
-            if(other.GetComponent<BoxScript>().IsCat = true){
+            if(other.GetComponent<BoxScript>().IsCat == true){
                 AddPoints.Invoke();
             }
         }
