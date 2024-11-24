@@ -29,9 +29,16 @@ public class BoxScript : MonoBehaviour
 
     private Vector3 lastPos = Vector3.zero; 
     private bool thrown = false;
+    private int velocityIndex = 0;
+    private Vector3[] lastPositions;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        lastPositions = new Vector3[5];
+        for(int i = 0; i < lastPositions.Length; i++)
+        {
+            lastPositions[i] = transform.position;
+        }
     }
     private void SetHeld()
     {
@@ -41,11 +48,18 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Velocity: " + rb.velocity);
         mousePos = GameManager.Instance.mousePos;
         FollowMouse();
         MoveTo();
         CheckShake();
         lastPos = mousePos;
+        GetLastVelocity();
+    }
+    private void GetLastVelocity()
+    {
+        lastPositions[velocityIndex % lastPositions.Length] = transform.position;
+        velocityIndex++;
     }
     private void CheckShake()
     {
@@ -64,6 +78,7 @@ public class BoxScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        rb.useGravity = false;
         if(!canBeClicked) return; 
         offset = transform.position - mousePos;
         setToMouse = true;
@@ -71,22 +86,30 @@ public class BoxScript : MonoBehaviour
     }
     private void OnMouseUp()
     {   
+        rb.useGravity = true;
         setToMouse = false;
-        CheckVelocity(rb.velocity);
+        CheckVelocity();
     }
-    private void CheckVelocity(Vector3 velocity)
+    private void CheckVelocity()
     {
         Vector3 pos = CenterPoint.instance.CenterPos;
-        Debug.Log(transform.position);
         
-        Debug.Log("UpOffset = " + (pos.y+UpOffset));
-        if (transform.position.x <= pos.x + LeftOffset)
+       
+        Vector3 vel = Vector3.zero;
+        for (int i = 0; i < lastPositions.Length; i++)
+        {
+            vel = lastPositions[i];
+        }
+        vel /= lastPositions.Length;
+        float dot = Vector3.Dot(vel.normalized, Vector3.up);
+        Debug.Log("Dot " + dot);
+        if (transform.position.x <= pos.x + LeftOffset && !thrown) //REPlACE WITH COLLIDER!!!!
         {
             thrown = true;
             Debug.Log("Left");
             ThrowLeft();
         }
-        if (transform.position.y >= pos.y + UpOffset)
+        if (dot >= .04 && !thrown)
         {
             thrown = true;
             Debug.Log("Up");
@@ -96,8 +119,6 @@ public class BoxScript : MonoBehaviour
         {
             CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
         }
-        //USE DOT-----------------------------------------------------------------------
-        Debug.Log(Vector3.Dot(velocity.normalized, Vector3.up));
     }
     private void ThrowUp()
     {
