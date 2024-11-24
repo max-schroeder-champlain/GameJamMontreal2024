@@ -52,7 +52,7 @@ public class TextManager : MonoBehaviour
             currentDialogue = temp;
         }
         Debug.Log("go");
-        currentDialogue.SetText(); 
+        //currentDialogue.SetText(); 
 
     }
 
