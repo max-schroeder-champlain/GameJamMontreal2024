@@ -28,14 +28,23 @@ public class ScoreScript : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        StartCoroutine(ExampleCoroutine());
+
+        //StartCoroutine(ExampleCoroutine());
         //SceneManager.LoadScene("ResultsScreen");
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(1);
-        Score = Score + (int) (100f *  Timer.Instance.ReturnScoreMultiplier());
+        
         //Debug.Log(Score);
         StartCoroutine(ExampleCoroutine());
     }
@@ -43,5 +52,10 @@ public class ScoreScript : MonoBehaviour
     public int ReturnScore()
     {
         return Score;
+    }
+
+    public void AddPoints()
+    {
+        Score = Score + (int) (100f *  Timer.Instance.ReturnScoreMultiplier());
     }
 }

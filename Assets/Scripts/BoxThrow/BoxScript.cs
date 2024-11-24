@@ -35,8 +35,12 @@ public class BoxScript : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip[] audioClips;
     public AudioSource hitSource;
+
+    public GameObject handOnePos = null;
+    public GameObject handTwoPos = null;
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         RandomizeAudio();
@@ -73,7 +77,7 @@ public class BoxScript : MonoBehaviour
     {
         if (!setToMouse) return;
         if(!IsCat) return;
-        if(Vector3.Distance(lastPos, mousePos) > 0.4f)
+        if(Vector3.Distance(lastPos, mousePos) > 0.2f)
         {
             Debug.Log("Shaking");
             if(!audioSource.isPlaying)
@@ -119,7 +123,7 @@ public class BoxScript : MonoBehaviour
             thrown = true;
             ThrowLeft();
         }
-        if (dot >= .7f && !thrown)
+        if (vel.y >= .5f && !thrown)
         {
             thrown = true;
             ThrowUp();
@@ -186,5 +190,10 @@ public class BoxScript : MonoBehaviour
         {
             hitSource.Play();
         }
+    }
+
+    private void SetHands()
+    {
+        GameManager.Instance.SetHandPos(handOnePos, handTwoPos);
     }
 }
