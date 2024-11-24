@@ -14,9 +14,9 @@ public class BoxScript : MonoBehaviour
 
     public UnityEvent OnThrownLeft;
 
-    private float LeftOffset = -0.5f;
-    private float UpOffset = 0.25f;
-    private bool canBeClicked = false;
+    //private float LeftOffset = -0.5f;
+    //private float UpOffset = 0.25f;
+    public bool canBeClicked = false;
     private float timeBeforeDestroy = 1.5f;
 
     private Vector3 StartPos = Vector3.zero;
@@ -35,29 +35,27 @@ public class BoxScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        lastPositions = new Vector3[5];
-        for(int i = 0; i < lastPositions.Length; i++)
-        {
-            lastPositions[i] = transform.position;
-        }
     }
     private void SetHeld()
     {
         CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
         rb.useGravity = true;
     }
-    // Update is called once per frame
     void Update()
     {
         mousePos = GameManager.Instance.mousePos;
-        FollowMouse();
-        MoveTo();
         CheckShake();
         lastPos = mousePos;
+    }
+    private void FixedUpdate()
+    {
+        FollowMouse();
+        MoveTo();
         GetLastVelocity();
     }
     private void GetLastVelocity()
     {
+        if (!setToMouse) return;
         lastPositions[velocityIndex % lastPositions.Length] = transform.position;
         velocityIndex++;
     }
@@ -93,22 +91,22 @@ public class BoxScript : MonoBehaviour
     }
     private void CheckVelocity()
     {
-        Vector3 pos = CenterPoint.instance.CenterPos;
-        
-       
         Vector3 vel = Vector3.zero;
         for (int i = 0; i < lastPositions.Length; i++)
         {
             vel = lastPositions[i];
         }
         vel /= lastPositions.Length;
-        float dot = Vector3.Dot(vel.normalized, Vector3.up);
-        if (GoLeft && !thrown) //REPlACE WITH COLLIDER!!!!
+        vel = new Vector3(0, vel.y, 0);
+        Vector3 forward = transform.TransformDirection(Vector3.up);
+        float dot = Vector3.Dot(vel, forward);
+        Debug.Log("Dot " + dot);
+        if (GoLeft && !thrown)
         {
             thrown = true;
             ThrowLeft();
         }
-        if (dot >= .04 && !thrown)
+        if (dot >= .7f && !thrown)
         {
             thrown = true;
             ThrowUp();
@@ -123,9 +121,9 @@ public class BoxScript : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints.None;
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
-        rb.AddForce(new Vector3(0, 0, 500));
+        rb.AddForce(new Vector3(0, 150, 500));
         canBeClicked = false;
-        //CenterPoint.instance.StartTimer();
+        //GameManager.Instance.SetCursorLocked();
     }
     private void ThrowLeft()
     {
@@ -133,7 +131,8 @@ public class BoxScript : MonoBehaviour
         rb.velocity = new Vector3(-(rb.velocity.x+7), rb.velocity.y, rb.velocity.z);
         canBeClicked = false;
         StartCoroutine(ToBeDeleted());
-       CenterPoint.instance.StartTimer();
+        CenterPoint.instance.StartTimer();
+        //GameManager.Instance.SetCursorLocked();
     }
     private IEnumerator ToBeDeleted()
     {
@@ -145,6 +144,11 @@ public class BoxScript : MonoBehaviour
     {
         StartPos = startPos;
         Moving = true;
+        lastPositions = new Vector3[5];
+        for (int i = 0; i < lastPositions.Length; i++)
+        {
+            lastPositions[i] = startPos;
+        }
     }
     private void MoveTo()
     {
@@ -159,7 +163,7 @@ public class BoxScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground") // maybe add barrier????
         {
             Instantiate(VFXprefab, collision.contacts[0].point, Quaternion.identity);
         }

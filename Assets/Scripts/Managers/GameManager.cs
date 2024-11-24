@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        SetCursorLocked();
     }
     void Update()
     {
@@ -39,5 +40,13 @@ public class GameManager : MonoBehaviour
         float tempX = Mouse.current.position.value.x;
         float tempY = Mouse.current.position.value.y;
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(tempX, tempY, 2));
+    }
+    public void SetCursorLocked()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void SetCursorConfined()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }

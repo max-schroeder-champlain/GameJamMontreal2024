@@ -15,9 +15,13 @@ public class WorldMovement : MonoBehaviour
     private Vector3 OldCameraPos;
     void Start()
     {
+        StartCoroutine(WaitFrame());
+    }
+    private IEnumerator WaitFrame()
+    {
+        yield return null;
         OnFinishedMoving.Invoke();
     }
-
     // Update is called once per frame
     void Update()
     {

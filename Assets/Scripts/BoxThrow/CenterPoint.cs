@@ -44,19 +44,30 @@ public class CenterPoint : MonoBehaviour
     {
         StartCoroutine(WaitForNewSpawn());
     }
+    public void Update()
+    {
+        if(spring.connectedBody != null && CurrentlyHeld != null && CurrentlyHeld.GetComponent<Rigidbody>() == spring.connectedBody)
+        {
+            if(!CurrentlyHeld.GetComponent<BoxScript>().canBeClicked)
+            {
+                CurrentlyHeld.GetComponent<BoxScript>().canBeClicked = true;
+            }
+        }
+    }
     public void SetCurrentlyHeld(GameObject toSet)
     {
         if (CurrentlyHeld != null) return;
         CurrentlyHeld = toSet;
-        if(CurrentlyHeld.GetComponent<Rigidbody>() != null ) 
+        toSet.GetComponent<BoxScript>().canBeClicked = true;
+        if (CurrentlyHeld.GetComponent<Rigidbody>() != null ) 
             spring.connectedBody = toSet.GetComponent<Rigidbody>();
+        GameManager.Instance.SetCursorConfined();
     }
     public void ReleaseHeld()
     {
         spring.connectedBody = null;
         CurrentlyHeld = null;
         //TightenSpring();
-        
     }
     public void StartTimer()
     {

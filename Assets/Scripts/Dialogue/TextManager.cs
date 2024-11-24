@@ -10,7 +10,6 @@ public class TextManager : MonoBehaviour
     public static TextManager instance = null;
     private DialogueScript currentDialogue = null;
     private StreamReader textReader = null;
-    private TextAsset textAsset = null;
 
     private void Awake()
     {
