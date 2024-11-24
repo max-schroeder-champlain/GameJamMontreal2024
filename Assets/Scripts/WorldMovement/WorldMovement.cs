@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class WorldMovement : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class WorldMovement : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip driving;
     public AudioClip stopping;
+    private int MoveNum = 0;
 
     private Vector3 startPos;
     private Vector3 endPos;
@@ -42,6 +44,11 @@ public class WorldMovement : MonoBehaviour
 
     public void MoveThePlayer()
     {
+        MoveNum++;
+        if(MoveNum >= 9)
+        {
+            SceneManager.LoadScene("ResultsScreen");
+        }
         startPos = this.transform.position;
         audioSource.clip = driving;
         if(!audioSource.isPlaying)
