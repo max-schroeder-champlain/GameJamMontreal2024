@@ -6,9 +6,21 @@ using UnityEngine.Events;
 public class ScoreScript : MonoBehaviour
 {
    public static ScoreScript Instance;
-   public UnityEvent CatDelivered;
+       //public UnityEvent CatDelivered;
 
-    private int ScoreValue;
+    //private int ScoreValue;
 
-    public int Score; 
+    public int Score;
+    private void Start()
+    {
+        StartCoroutine(ExampleCoroutine());
+    }
+
+    IEnumerator ExampleCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        Score = Score + (int) (100f *  Timer.Instance.ReturnScoreMultiplier());
+        //Debug.Log(Score);
+        StartCoroutine(ExampleCoroutine());
+    }
 }

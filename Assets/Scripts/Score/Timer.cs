@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-
+    public static Timer Instance;
     private float currentTime = 0;
     TimeSpan time = TimeSpan.Zero;
     private float PlayerScoreMultiplier;
@@ -16,6 +16,18 @@ public class Timer : MonoBehaviour
     //ADJUST THESE TO ACCOUNT FOR PAR TIME (Remember: 1 Minute is 60 Seconds, so do the math to implement)
     private int ScoreMultiDepreciateStart = 5;
     private int ScoreMultiDepreciateEnd = 35;
+
+    private void OnEnable()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Update()
     {
@@ -42,8 +54,13 @@ public class Timer : MonoBehaviour
 
 
         //Debug.Log(currentTime);
-        Debug.Log(PlayerScoreMultiplier);
+       // Debug.Log(PlayerScoreMultiplier);
 
 
+    }
+
+    public float ReturnScoreMultiplier()
+    {
+        return PlayerScoreMultiplier;
     }
 }
