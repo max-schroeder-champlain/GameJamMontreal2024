@@ -38,6 +38,8 @@ public class CenterPoint : MonoBehaviour
         CenterPos = transform.position;
         Debug.Log(CenterPos);
     }
+
+
     private void Start()
     {
         StartCoroutine(WaitForNewSpawn());
@@ -74,7 +76,7 @@ public class CenterPoint : MonoBehaviour
     private IEnumerator WaitForNewSpawn()
     {
         yield return new WaitForSeconds(TimeToWait);
-        if(CreateNewBox != null)
-            CreateNewBox.CreateBox();
+        //if(CreateNewBox != null)
+           // CreateNewBox.CreateBox();
     }    
 }

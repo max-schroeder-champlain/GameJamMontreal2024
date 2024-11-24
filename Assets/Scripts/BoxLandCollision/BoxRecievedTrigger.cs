@@ -21,7 +21,13 @@ public class TriggerEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnTriggerEnterEvent.Invoke();
+        
+        if (other.tag == "Box")
+        {
+            Debug.Log("HIT");
+            OnTriggerEnterEvent.Invoke();
+        }
+        
     }
 
     private void OnDrawGizmos()

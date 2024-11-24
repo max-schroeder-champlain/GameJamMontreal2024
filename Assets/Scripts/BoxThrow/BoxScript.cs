@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+
 [RequireComponent(typeof(Rigidbody))]
 public class BoxScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class BoxScript : MonoBehaviour
     public bool setToMouse = false;
     private Vector3 mousePos;
     private Vector3 offset = Vector3.zero;
+
+    public UnityEvent OnThrownLeft;
 
     private float LeftOffset = -0.5f;
     private float UpOffset = 0.25f;
@@ -103,7 +106,7 @@ public class BoxScript : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
         rb.AddForce(new Vector3(0, 0, 500));
         canBeClicked = false;
-        CenterPoint.instance.StartTimer();
+        //CenterPoint.instance.StartTimer();
     }
     private void ThrowLeft()
     {
@@ -112,11 +115,12 @@ public class BoxScript : MonoBehaviour
         Debug.Log("Left " + rb.velocity);
         canBeClicked = false;
         StartCoroutine(ToBeDeleted());
-        CenterPoint.instance.StartTimer();
+       CenterPoint.instance.StartTimer();
     }
     private IEnumerator ToBeDeleted()
     {
         yield return new WaitForSeconds(timeBeforeDestroy);
+        OnThrownLeft.Invoke();
         Destroy(this.gameObject);
     }
     public void MoveToStart(Vector3 startPos)

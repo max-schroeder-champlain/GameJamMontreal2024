@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WorldMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public bool isMoving;
+    public GameObject BoxCenter;
+    public GameObject NewBoxSpawn;
+    public UnityEvent OnFinishedMoving;
+    private Vector3 OldCameraPos;
     void Start()
     {
-        StartCoroutine(MovementWaitTime());
+        OnFinishedMoving.Invoke();
     }
 
     // Update is called once per frame
@@ -25,7 +30,9 @@ public class WorldMovement : MonoBehaviour
 
     public void MoveThePlayer()
     {
+        OldCameraPos = this.gameObject.transform.position;
         isMoving = true;
+        StartCoroutine(MovementWaitTime());
     }
     private void MovePlayer()
     {
@@ -35,5 +42,8 @@ public class WorldMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         isMoving = false;
+        BoxCenter.transform.position= new Vector3 (BoxCenter.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), BoxCenter.transform.position.y, BoxCenter.transform.position.z);
+        NewBoxSpawn.transform.position = new Vector3(NewBoxSpawn.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), NewBoxSpawn.transform.position.y, NewBoxSpawn.transform.position.z);
+        OnFinishedMoving.Invoke();
     }
 }
