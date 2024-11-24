@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LocalNeighborhood.unity
     guid: a16ac3494ba083741adcbe2e2005635c
+  - enabled: 1
+    path: Assets/Scenes/ResultsScreen.unity
+    guid: 7fad49b7bb6aa5246bd0bc22f2a48cd3
   m_configObjects: {}
