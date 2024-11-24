@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void CreditsMenu()
     {
-        //SceneManager.LoadScene("CreditsMenu");
+        SceneManager.LoadScene("Credits");
         Debug.Log("Credits Opened"); 
     }
 
@@ -27,5 +27,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("LocalNeighborhood");
         Debug.Log("Game Begin"); 
+    }
+
+    public void CreditsBack()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("MainMenu"); 
     }
 }
