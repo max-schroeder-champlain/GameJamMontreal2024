@@ -8242,6 +8242,7 @@ MonoBehaviour:
   isMoving: 1
   BoxCenter: {fileID: 0}
   NewBoxSpawn: {fileID: 0}
+  LeftThrow: {fileID: 0}
   OnFinishedMoving:
     m_PersistentCalls:
       m_Calls: []
@@ -22491,6 +22492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1669104630}
   - component: {fileID: 1669104629}
+  - component: {fileID: 1669104631}
   m_Layer: 0
   m_Name: LeftThrowCollider
   m_TagString: Untagged
@@ -22534,6 +22536,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669104631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669104628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed59b3647e09750419212e3c6711a9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1669752846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8347236918142067421, guid: fdcad159ff279914abd65635423ce309, type: 3}
@@ -28739,6 +28753,7 @@ MonoBehaviour:
   isMoving: 0
   BoxCenter: {fileID: 1647064104}
   NewBoxSpawn: {fileID: 1590124820}
+  LeftThrow: {fileID: 1669104628}
   OnFinishedMoving:
     m_PersistentCalls:
       m_Calls:
