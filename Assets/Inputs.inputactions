@@ -6,18 +6,18 @@
             "id": "f2704e06-4d08-460e-b3ec-de07e72ba7f8",
             "actions": [
                 {
-                    "name": "Skip",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "9f2fbc0a-60e8-41ae-aed9-5ed9f847e5ae",
+                    "id": "35d66f4e-8f46-419f-a559-205053deff9a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "ResetBox",
                     "type": "Button",
-                    "id": "35d66f4e-8f46-419f-a559-205053deff9a",
+                    "id": "6525c6fd-268e-442c-98fd-77a45f076a5d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -27,23 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "05d651cb-8e02-4af4-9aaa-789d058b7d86",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard/Mouse",
-                    "action": "Skip",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f23fa617-2a84-4222-95f5-89217c67422c",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard;Keyboard/Mouse",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d6d89be-c950-4378-a02b-6987dba9de6b",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard;Keyboard/Mouse",
+                    "action": "ResetBox",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

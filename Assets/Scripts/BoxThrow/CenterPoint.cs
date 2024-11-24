@@ -94,4 +94,6 @@ public class CenterPoint : MonoBehaviour
     {
         CreateNewBox.CauseFire(isCat);
     }
+
+
 }
