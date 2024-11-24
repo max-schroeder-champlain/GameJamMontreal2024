@@ -61,7 +61,7 @@ public class TextManager : MonoBehaviour
     {
         while (!textReader.EndOfStream)
         {
-            if (textReader.ReadLine() == key)
+            if (textReader.ReadLine()==key)
             {
                 string text = textReader.ReadLine();
                 return text; 
@@ -70,6 +70,7 @@ public class TextManager : MonoBehaviour
         return "fuck"; 
     }
 
+   
     public void NextDialogue()
     {
         if (currentDialogue == null) return; 

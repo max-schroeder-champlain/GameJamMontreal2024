@@ -12,7 +12,7 @@ public class DialogueScript : MonoBehaviour
     public string[] TextKeys = null;
     private int arrayIndex = 0;
     private int arrayMax;
-    private float delayTime = 0.1f;
+    private float delayTime = 0.05f;
     public bool typing = false;
 
     private void Start()
