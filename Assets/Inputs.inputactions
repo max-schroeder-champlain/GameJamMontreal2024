@@ -42,7 +42,7 @@
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;Keyboard/Mouse",
                     "action": "ResetBox",
                     "isComposite": false,
                     "isPartOfComposite": false
