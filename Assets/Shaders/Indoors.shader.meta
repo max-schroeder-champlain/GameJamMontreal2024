@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 504f260e8cdc8e24ba2c9495595315dc
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _IndoorsTexture: {fileID: 8900000, guid: ff9875b0b5f47a344983ff1605726ee7, type: 3}
+  - _OutdoorsRefection: {fileID: 8900000, guid: 741f0af3ba88e14499605bb84b13d2f9, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
