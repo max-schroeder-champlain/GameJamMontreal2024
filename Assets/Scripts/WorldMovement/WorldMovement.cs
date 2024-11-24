@@ -16,6 +16,9 @@ public class WorldMovement : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip driving;
     public AudioClip stopping;
+
+    private Vector3 startPos;
+    private Vector3 endPos;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -39,6 +42,7 @@ public class WorldMovement : MonoBehaviour
 
     public void MoveThePlayer()
     {
+        startPos = this.transform.position;
         audioSource.clip = driving;
         if(!audioSource.isPlaying)
             audioSource.Play();
@@ -63,5 +67,7 @@ public class WorldMovement : MonoBehaviour
             audioSource.Play();
         }
         OnFinishedMoving.Invoke();
+        endPos = this.gameObject.transform.position;
+        Debug.Log(startPos.x - endPos.x);
     }
 }
