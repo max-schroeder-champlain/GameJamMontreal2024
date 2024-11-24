@@ -32,9 +32,19 @@ public class BoxScript : MonoBehaviour
     private int velocityIndex = 0;
     private Vector3[] lastPositions;
     public bool GoLeft = false;
+    private AudioSource audioSource;
+    public AudioClip[] audioClips;
+    public AudioSource hitSource;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        RandomizeAudio();
+    }
+    private void RandomizeAudio()
+    {
+        int rand = Random.Range(0 , audioClips.Length);
+        audioSource.clip = audioClips[rand];
     }
     private void SetHeld()
     {
@@ -66,7 +76,10 @@ public class BoxScript : MonoBehaviour
         if(Vector3.Distance(lastPos, mousePos) > 0.4f)
         {
             Debug.Log("Shaking");
-            //Play Meow Sound
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            } 
         }
     }
     private void FollowMouse()
@@ -136,7 +149,9 @@ public class BoxScript : MonoBehaviour
     }
     private IEnumerator ToBeDeleted()
     {
-        yield return new WaitForSeconds(timeBeforeDestroy);
+        yield return new WaitForSeconds(timeBeforeDestroy*.5f);
+        CenterPoint.instance.CauseFire(IsCat);
+        yield return new WaitForSeconds(timeBeforeDestroy * .5f);
         OnThrownLeft.Invoke();
         Destroy(this.gameObject);
     }
@@ -166,6 +181,10 @@ public class BoxScript : MonoBehaviour
         if(collision.gameObject.tag == "Ground") // maybe add barrier????
         {
             Instantiate(VFXprefab, collision.contacts[0].point, Quaternion.identity);
+        }
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Barrier")
+        {
+            hitSource.Play();
         }
     }
 }
