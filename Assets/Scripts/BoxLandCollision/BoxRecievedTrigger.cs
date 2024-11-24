@@ -8,6 +8,7 @@ public class TriggerEvent : MonoBehaviour
 {
 
     public UnityEvent OnTriggerEnterEvent;
+    public UnityEvent AddPoints;
     Rigidbody rb;
     BoxCollider boxCol;
 
@@ -26,6 +27,9 @@ public class TriggerEvent : MonoBehaviour
         {
             Debug.Log("HIT");
             OnTriggerEnterEvent.Invoke();
+            if(other.GetComponent<BoxScript>().IsCat = true){
+                AddPoints.Invoke();
+            }
         }
         
     }

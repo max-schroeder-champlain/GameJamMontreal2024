@@ -44,7 +44,7 @@ public class ScoreScript : MonoBehaviour
     IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(1);
-        Score = Score + (int) (100f *  Timer.Instance.ReturnScoreMultiplier());
+        
         //Debug.Log(Score);
         StartCoroutine(ExampleCoroutine());
     }
@@ -52,5 +52,10 @@ public class ScoreScript : MonoBehaviour
     public int ReturnScore()
     {
         return Score;
+    }
+
+    public void AddPoints()
+    {
+        Score = Score + (int) (100f *  Timer.Instance.ReturnScoreMultiplier());
     }
 }
