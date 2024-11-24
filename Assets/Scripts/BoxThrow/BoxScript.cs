@@ -131,6 +131,7 @@ public class BoxScript : MonoBehaviour
         if(!thrown)
         {
             CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
+            Moving = true;
         }
     }
     private void ThrowUp()
@@ -191,7 +192,6 @@ public class BoxScript : MonoBehaviour
             hitSource.Play();
         }
     }
-
     private void SetHands()
     {
         GameManager.Instance.SetHandPos(handOnePos, handTwoPos);
