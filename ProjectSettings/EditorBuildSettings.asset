@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Maps/PrototypeLevels/testMenu.unity
-    guid: e899f1b2c4380d54d8844bae73d3ba85
+    path: Assets/Scenes/MainMenu.unity
+    guid: b8b99b345cb6f5544881ff8cc0131751
   - enabled: 1
     path: Assets/Maps/PrototypeLevels/BoxThrow.unity
     guid: 36f3b0a17348ca241b2b16307c3dceca
