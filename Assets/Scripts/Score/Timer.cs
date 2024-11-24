@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
     private int ScoreMultiDepreciateStart = 5;
     private int ScoreMultiDepreciateEnd = 35;
 
+
     private void OnEnable()
     {
         if (Instance == null)

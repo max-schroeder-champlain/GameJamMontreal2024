@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ScoreScript : MonoBehaviour
     //private int ScoreValue;
 
     public int Score;
+
 
     private void OnEnable()
     {
@@ -23,9 +25,11 @@ public class ScoreScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void Start()
+    private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         StartCoroutine(ExampleCoroutine());
+        SceneManager.LoadScene("ResultsScreen");
     }
 
     IEnumerator ExampleCoroutine()
