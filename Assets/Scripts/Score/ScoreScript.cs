@@ -29,7 +29,7 @@ public class ScoreScript : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         StartCoroutine(ExampleCoroutine());
-        SceneManager.LoadScene("ResultsScreen");
+        //SceneManager.LoadScene("ResultsScreen");
     }
 
     IEnumerator ExampleCoroutine()
