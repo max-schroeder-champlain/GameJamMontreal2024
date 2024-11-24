@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject handPosOne;
     public GameObject handPosTwo;
     public GameObject PauseCanvas;
+    public UnityEvent ResetBoxPos;
     private PlayerInput playerInput;
     private bool isPaused = false;
     private void OnEnable()
@@ -85,5 +87,10 @@ public class GameManager : MonoBehaviour
             PauseCanvas.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    void OnResetBox(InputValue Input)
+    {
+        ResetBoxPos.Invoke();
     }
 }

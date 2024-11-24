@@ -94,4 +94,12 @@ public class CenterPoint : MonoBehaviour
     {
         CreateNewBox.CauseFire(isCat);
     }
+
+    public void ResetBoxPos()
+    {
+        if (CurrentlyHeld != null)
+        {
+            CurrentlyHeld.transform.position = CenterPos;
+        }
+    }
 }
