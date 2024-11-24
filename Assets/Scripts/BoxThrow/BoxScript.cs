@@ -35,6 +35,9 @@ public class BoxScript : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip[] audioClips;
     public AudioSource hitSource;
+
+    public GameObject handOnePos = null;
+    public GameObject handTwoPos = null;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -186,5 +189,10 @@ public class BoxScript : MonoBehaviour
         {
             hitSource.Play();
         }
+    }
+
+    private void SetHands()
+    {
+        GameManager.Instance.SetHandPos(handOnePos, handTwoPos);
     }
 }

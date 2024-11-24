@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Vector3 mousePos;
     private Camera mainCamera;
+    public GameObject handOne;
+    public GameObject handTwo;
+    public GameObject handPosOne;
+    public GameObject handPosTwo;
     private void OnEnable()
     {
         if (Instance == null)
@@ -35,6 +39,13 @@ public class GameManager : MonoBehaviour
     {
         GetMousePos();
     }
+    private void FixedUpdate()
+    {
+        if(handPosOne!= null && handPosTwo != null)
+        {
+
+        }
+    }
     private void GetMousePos()
     {
         float tempX = Mouse.current.position.value.x;
@@ -48,5 +59,10 @@ public class GameManager : MonoBehaviour
     public void SetCursorConfined()
     {
         Cursor.lockState = CursorLockMode.Confined;
+    }
+    public void SetHandPos(GameObject one, GameObject two)
+    {
+        handPosOne = one;
+        handPosTwo = two;
     }
 }
