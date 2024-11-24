@@ -13,8 +13,12 @@ public class WorldMovement : MonoBehaviour
     public GameObject LeftThrow;
     public UnityEvent OnFinishedMoving;
     private Vector3 OldCameraPos;
+    private AudioSource audioSource;
+    public AudioClip driving;
+    public AudioClip stopping;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(WaitFrame());
     }
     private IEnumerator WaitFrame()
@@ -35,6 +39,9 @@ public class WorldMovement : MonoBehaviour
 
     public void MoveThePlayer()
     {
+        audioSource.clip = driving;
+        if(!audioSource.isPlaying)
+            audioSource.Play();
         OldCameraPos = this.gameObject.transform.position;
         isMoving = true;
         StartCoroutine(MovementWaitTime());
@@ -50,6 +57,11 @@ public class WorldMovement : MonoBehaviour
         BoxCenter.transform.position= new Vector3 (BoxCenter.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), BoxCenter.transform.position.y, BoxCenter.transform.position.z);
         NewBoxSpawn.transform.position = new Vector3(NewBoxSpawn.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), NewBoxSpawn.transform.position.y, NewBoxSpawn.transform.position.z);
         LeftThrow.transform.position = new Vector3(LeftThrow.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), LeftThrow.transform.position.y, LeftThrow.transform.position.z);
+        audioSource.clip = stopping;
+        if(audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
         OnFinishedMoving.Invoke();
     }
 }
