@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     public void TutorialStart()
     {
-        SceneManager.LoadScene("LocalNeighborhood");
+        SceneManager.LoadScene("GameScene");
         Debug.Log("Game Begin"); 
     }
 

@@ -11,11 +11,11 @@ public class Timer : MonoBehaviour
     private float PlayerScoreMultiplier;
 
     //ADJUST THIS TO CHANGE THE MAXIMUM SCORE MULTIPLIER
-    private float PlayerScoreMultiplierMAX = 6;
+    private float PlayerScoreMultiplierMAX = 3;
 
     //ADJUST THESE TO ACCOUNT FOR PAR TIME (Remember: 1 Minute is 60 Seconds, so do the math to implement)
-    private int ScoreMultiDepreciateStart = 5;
-    private int ScoreMultiDepreciateEnd = 35;
+    private int ScoreMultiDepreciateStart = 60;
+    private int ScoreMultiDepreciateEnd = 120;
 
 
     private void OnEnable()

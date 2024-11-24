@@ -63,7 +63,7 @@ public class WorldMovement : MonoBehaviour
     }
     IEnumerator MovementWaitTime()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4.5f);
         isMoving = false;
         BoxCenter.transform.position= new Vector3 (BoxCenter.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), BoxCenter.transform.position.y, BoxCenter.transform.position.z);
         NewBoxSpawn.transform.position = new Vector3(NewBoxSpawn.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), NewBoxSpawn.transform.position.y, NewBoxSpawn.transform.position.z);
