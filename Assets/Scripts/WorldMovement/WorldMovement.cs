@@ -10,6 +10,7 @@ public class WorldMovement : MonoBehaviour
     public bool isMoving;
     public GameObject BoxCenter;
     public GameObject NewBoxSpawn;
+    public GameObject LeftThrow;
     public UnityEvent OnFinishedMoving;
     private Vector3 OldCameraPos;
     void Start()
@@ -44,6 +45,7 @@ public class WorldMovement : MonoBehaviour
         isMoving = false;
         BoxCenter.transform.position= new Vector3 (BoxCenter.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), BoxCenter.transform.position.y, BoxCenter.transform.position.z);
         NewBoxSpawn.transform.position = new Vector3(NewBoxSpawn.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), NewBoxSpawn.transform.position.y, NewBoxSpawn.transform.position.z);
+        LeftThrow.transform.position = new Vector3(LeftThrow.transform.position.x + (this.gameObject.transform.position.x - OldCameraPos.x), LeftThrow.transform.position.y, LeftThrow.transform.position.z);
         OnFinishedMoving.Invoke();
     }
 }

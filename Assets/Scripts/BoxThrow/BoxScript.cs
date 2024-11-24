@@ -31,6 +31,7 @@ public class BoxScript : MonoBehaviour
     private bool thrown = false;
     private int velocityIndex = 0;
     private Vector3[] lastPositions;
+    public bool GoLeft = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,7 +49,6 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Velocity: " + rb.velocity);
         mousePos = GameManager.Instance.mousePos;
         FollowMouse();
         MoveTo();
@@ -78,14 +78,15 @@ public class BoxScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if(!canBeClicked) return;
         rb.useGravity = false;
-        if(!canBeClicked) return; 
         offset = transform.position - mousePos;
         setToMouse = true;
         CenterPoint.instance.ReleaseHeld();
     }
     private void OnMouseUp()
-    {   
+    {
+        if (!canBeClicked) return;
         rb.useGravity = true;
         setToMouse = false;
         CheckVelocity();
@@ -102,17 +103,14 @@ public class BoxScript : MonoBehaviour
         }
         vel /= lastPositions.Length;
         float dot = Vector3.Dot(vel.normalized, Vector3.up);
-        Debug.Log("Dot " + dot);
-        if (transform.position.x <= pos.x + LeftOffset && !thrown) //REPlACE WITH COLLIDER!!!!
+        if (GoLeft && !thrown) //REPlACE WITH COLLIDER!!!!
         {
             thrown = true;
-            Debug.Log("Left");
             ThrowLeft();
         }
         if (dot >= .04 && !thrown)
         {
             thrown = true;
-            Debug.Log("Up");
             ThrowUp();
         }
         if(!thrown)
@@ -123,7 +121,7 @@ public class BoxScript : MonoBehaviour
     private void ThrowUp()
     {
 
-        Debug.Log("Velocity " + rb.velocity);
+        rb.constraints = RigidbodyConstraints.None;
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
         rb.AddForce(new Vector3(0, 0, 500));
         canBeClicked = false;
@@ -133,7 +131,6 @@ public class BoxScript : MonoBehaviour
     {
         CenterPoint.instance.ReleaseHeld();
         rb.velocity = new Vector3(-(rb.velocity.x+7), rb.velocity.y, rb.velocity.z);
-        Debug.Log("Left " + rb.velocity);
         canBeClicked = false;
         StartCoroutine(ToBeDeleted());
        CenterPoint.instance.StartTimer();
