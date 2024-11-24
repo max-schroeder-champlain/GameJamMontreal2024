@@ -14,4 +14,8 @@ public class testmenu : MonoBehaviour
     {
         SceneManager.LoadScene("BoxThrow"); 
     }
+    public void ButtonThree()
+    {
+        SceneManager.LoadScene("LocalNeighborhood");
+    }
 }

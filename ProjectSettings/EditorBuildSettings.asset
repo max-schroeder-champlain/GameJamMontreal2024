@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Maps/PrototypeLevels/BoxThrow.unity
-    guid: c1e67e72567b6a943a45f7622e279a1c
-  - enabled: 1
-    path: Assets/Maps/PrototypeLevels/DialogueScene.unity
-    guid: a23eadaba511592449d4e669339ead42
-  - enabled: 1
     path: Assets/Maps/testMenu.unity
     guid: e899f1b2c4380d54d8844bae73d3ba85
+  - enabled: 1
+    path: Assets/Maps/PrototypeLevels/BoxThrow.unity
+    guid: 36f3b0a17348ca241b2b16307c3dceca
+  - enabled: 1
+    path: Assets/Environments/Terrain/DialogueScene.unity
+    guid: a23eadaba511592449d4e669339ead42
+  - enabled: 1
+    path: Assets/Scenes/LocalNeighborhood.unity
+    guid: a16ac3494ba083741adcbe2e2005635c
   m_configObjects: {}
