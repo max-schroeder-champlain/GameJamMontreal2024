@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Flower1
+  m_Name: M_WelcomeMat
   m_Shader: {fileID: 4800000, guid: b87ba19df872ced45bc3b62e746d4d14, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 9d7d4419d3cf7a94d8d1881b944bfd24, type: 3}
+        m_Texture: {fileID: 2800000, guid: 28e5200c47169b2438b09d08a6ee8d9f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -79,8 +79,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineBrightness: 0.2
-    - _OutlineWidth: 0.01
+    - _OutlineBrightness: 0.25
+    - _OutlineWidth: 0.016
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
