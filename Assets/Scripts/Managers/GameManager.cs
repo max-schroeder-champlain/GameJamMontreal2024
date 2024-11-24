@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject handTwo;
     public GameObject handPosOne;
     public GameObject handPosTwo;
+    public GameObject PauseCanvas;
+    private PlayerInput playerInput;
+    private bool isPaused = false;
     private void OnEnable()
     {
         if (Instance == null)
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         mainCamera = Camera.main;
         SetCursorLocked();
     }
@@ -64,5 +68,22 @@ public class GameManager : MonoBehaviour
     {
         handPosOne = one;
         handPosTwo = two;
+    }
+
+    void OnPause(InputValue Input)
+    {
+        if (!isPaused)
+        {
+            isPaused = true;
+            PauseCanvas.SetActive(true);
+            Time.timeScale = 0;
+
+        }
+        else if (isPaused)
+        {
+            isPaused=false;
+            PauseCanvas.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }
