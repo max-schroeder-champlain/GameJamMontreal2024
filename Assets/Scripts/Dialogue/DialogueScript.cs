@@ -15,12 +15,13 @@ public class DialogueScript : MonoBehaviour
     private float delayTime = 0.05f;
     public bool typing = false;
     public GameObject box; 
-
+     
     private void Start()
     {
         //Name.text = CharacterName;
         arrayMax = TextKeys.Length;
-        TextManager.instance.SetCurrentDialogue(this); 
+        TextManager.instance.SetCurrentDialogue(this);
+        box.SetActive(false);
     }
 
     public void SetText()
