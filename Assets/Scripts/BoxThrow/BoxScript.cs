@@ -123,14 +123,14 @@ public class BoxScript : MonoBehaviour
             thrown = true;
             ThrowLeft();
         }
-        if (vel.y >= .5f && !thrown)
+        if (vel.y >= .2f && !thrown)
         {
             thrown = true;
             ThrowUp();
         }
         if(!thrown)
         {
-            CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
+            //CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
             Moving = true;
         }
     }
