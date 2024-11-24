@@ -6,18 +6,18 @@ public class LeftBoxColliderScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Box")
+        if(other.GetComponentInParent<BoxScript>() != null)
         {
             Debug.Log("SetLeft");
-            other.GetComponent<BoxScript>().GoLeft = true;
+            other.GetComponentInParent<BoxScript>().GoLeft = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Box")
+        if (other.GetComponentInParent<BoxScript>() != null)
         {
             Debug.Log("UnsetLeft");
-            other.GetComponent<BoxScript>().GoLeft = false;
+            other.GetComponentInParent<BoxScript>().GoLeft = false;
         }
     }
 }

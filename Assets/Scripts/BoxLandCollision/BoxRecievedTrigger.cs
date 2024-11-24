@@ -23,11 +23,11 @@ public class TriggerEvent : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.tag == "Box")
+        if (other.GetComponentInParent<BoxScript>() != null)
         {
             Debug.Log("HIT");
             OnTriggerEnterEvent.Invoke();
-            if(other.GetComponent<BoxScript>().IsCat == true){
+            if(other.GetComponentInParent<BoxScript>().IsCat == true){
                 AddPoints.Invoke();
             }
         }

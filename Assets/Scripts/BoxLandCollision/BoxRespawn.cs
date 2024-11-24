@@ -22,7 +22,7 @@ public class BoxRespawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Box")
+        if (other.GetComponentInParent<BoxScript>() != null)
         {
             Destroy(other.gameObject);
             ResetBoxPos.Invoke();

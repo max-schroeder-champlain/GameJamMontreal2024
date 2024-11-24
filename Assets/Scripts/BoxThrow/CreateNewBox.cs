@@ -41,8 +41,8 @@ public class CreateNewBox : MonoBehaviour
         RandomizeAudio();
         if(!catSource.isPlaying && isCat)
             catSource.Play();
-        fireSound.PlayAudio();
-        StartCoroutine(LightFire());
+        //fireSound.PlayAudio();
+        //StartCoroutine(LightFire());
     }
     private IEnumerator LightFire()
     {
