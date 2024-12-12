@@ -32,6 +32,7 @@ public class BoxScript : MonoBehaviour
     private int velocityIndex = 0;
     private Vector3[] lastPositions;
     public bool GoLeft = false;
+    public bool GoUp = false;
     private AudioSource audioSource;
     public AudioClip[] audioClips;
     public AudioSource hitSource;
@@ -53,7 +54,7 @@ public class BoxScript : MonoBehaviour
     private void SetHeld()
     {
         CenterPoint.instance.SetCurrentlyHeld(this.gameObject);
-        rb.useGravity = true;
+        //rb.useGravity = true;
     }
     void Update()
     {
@@ -102,28 +103,18 @@ public class BoxScript : MonoBehaviour
     private void OnMouseUp()
     {
         if (!canBeClicked) return;
-        rb.useGravity = true;
+        
         setToMouse = false;
         CheckVelocity();
     }
-    private void CheckVelocity()
+    private void CheckVelocity() // no longer has anything to do with velocity :)
     {
-        Vector3 vel = Vector3.zero;
-        for (int i = 0; i < lastPositions.Length; i++)
-        {
-            vel = lastPositions[i];
-        }
-        vel /= lastPositions.Length;
-        vel = new Vector3(0, vel.y, 0);
-        Vector3 forward = transform.TransformDirection(Vector3.up);
-        float dot = Vector3.Dot(vel, forward);
-        Debug.Log("Dot " + dot);
         if (GoLeft && !thrown)
         {
             thrown = true;
             ThrowLeft();
         }
-        if (vel.y >= .2f && !thrown)
+        if (GoUp && !thrown)
         {
             thrown = true;
             ThrowUp();
@@ -136,20 +127,24 @@ public class BoxScript : MonoBehaviour
     }
     private void ThrowUp()
     {
-
+        Debug.Log("ThrownUp");
+        rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.None;
-        rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
+        //rb.velocity = new Vector3(rb.velocity.x, Mathf.Abs(rb.velocity.y), rb.velocity.z);
         rb.AddForce(new Vector3(0, 150, 500));
         canBeClicked = false;
         //GameManager.Instance.SetCursorLocked();
+        CenterPoint.instance.SetCanCreate(true);
     }
     private void ThrowLeft()
     {
+        rb.useGravity = true;
         CenterPoint.instance.ReleaseHeld();
         rb.velocity = new Vector3(-(rb.velocity.x+7), rb.velocity.y, rb.velocity.z);
         canBeClicked = false;
         StartCoroutine(ToBeDeleted());
         CenterPoint.instance.StartTimer();
+        CenterPoint.instance.SetCanCreate(true);
         //GameManager.Instance.SetCursorLocked();
     }
     private IEnumerator ToBeDeleted()

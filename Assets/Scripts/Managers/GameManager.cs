@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         if (!isPaused)
         {
             isPaused = true;
-            PauseCanvas.SetActive(true);
+            //PauseCanvas.SetActive(true);
             Time.timeScale = 0;
 
         }

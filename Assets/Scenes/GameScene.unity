@@ -2673,6 +2673,10 @@ PrefabInstance:
       value: VFX_Smoke (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4724,6 +4728,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1886169029323335896, guid: ab45e1f742a48f242b8a44df438a54a9, type: 3}
   m_PrefabInstance: {fileID: 127928675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &128982729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128982732}
+  - component: {fileID: 128982731}
+  - component: {fileID: 128982733}
+  m_Layer: 0
+  m_Name: UPThrowCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &128982731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128982729}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.6082194, y: 1.57, z: 1.76}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &128982732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128982729}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5370026, y: 0.86899996, z: -0.2810011}
+  m_LocalScale: {x: 1, y: 0.3482, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 225879921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128982733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128982729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787d7b1bff379ef42bf088455dcf763d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &129210790 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1253922718862635618, guid: ab45e1f742a48f242b8a44df438a54a9, type: 3}
@@ -6156,7 +6226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &181817659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7841,10 +7911,11 @@ Transform:
   m_GameObject: {fileID: 225879918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -51.247, y: 2.352, z: -8.858999}
+  m_LocalPosition: {x: -52.718, y: 2.352, z: -8.858999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 128982732}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &228128662
@@ -19004,6 +19075,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109ff1c6ec015e7478e1149b530b2f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Text:
+  - House1
+  - Ugh. Haven't forgiven them for licorice on Halloween.
+  - House2
+  - Ha, that stupid mower was so loud on Sunday's.
+  - House3
+  - 'I wonder if those twerps ever grew out of sucking... '
+  - House4
+  - Every town has their crazy cat lady.
+  - House5
+  - One time they had a penguin move in. Weird.
+  - House6
+  - She was miserable and took it out on me. Arsehole.
+  - House7
+  - Felt like there was a new rumor every day about that place.
+  - House8
+  - Yikes, hope the bachelor pad is fun, at least.
+  - House9
+  - We're still friends on Facebook, haha
+  - House10
+  - Them and their pool were such a hit in the summertime.
 --- !u!4 &610006297
 Transform:
   m_ObjectHideFlags: 0
@@ -37143,6 +37235,10 @@ PrefabInstance:
     - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
       propertyPath: m_Name
       value: VFX_Smoke (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -57113,7 +57209,7 @@ Transform:
   m_GameObject: {fileID: 1790495889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.690002, y: 2.47, z: -11.280001}
+  m_LocalPosition: {x: -51.161, y: 2.47, z: -11.280001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -63255,13 +63351,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4058192932075882561, guid: ff66bb69e23dcd24394538b146369f1f, type: 3}
+      propertyPath: CanCreate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5064301640548177549, guid: ff66bb69e23dcd24394538b146369f1f, type: 3}
       propertyPath: m_Name
       value: NewBoxPoint
       objectReference: {fileID: 0}
     - target: {fileID: 5796805609705953465, guid: ff66bb69e23dcd24394538b146369f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -53.57
+      value: -55.040997
       objectReference: {fileID: 0}
     - target: {fileID: 5796805609705953465, guid: ff66bb69e23dcd24394538b146369f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -66540,6 +66640,10 @@ PrefabInstance:
       value: VFX_Smoke (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -67275,6 +67379,10 @@ PrefabInstance:
     - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
       propertyPath: m_Name
       value: VFX_Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3464233567138135920, guid: cb503a3df2e59fa44bd225d7bf54d139, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -68134,7 +68242,7 @@ Transform:
   m_GameObject: {fileID: 2138499489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.690002, y: 2.269, z: -9.129999}
+  m_LocalPosition: {x: -51.161, y: 2.269, z: -9.129999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

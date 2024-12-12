@@ -59,8 +59,8 @@ public class CenterPoint : MonoBehaviour
         if (CurrentlyHeld != null) return;
         CurrentlyHeld = toSet;
         toSet.GetComponent<BoxScript>().canBeClicked = true;
-        if (CurrentlyHeld.GetComponent<Rigidbody>() != null ) 
-            spring.connectedBody = toSet.GetComponent<Rigidbody>();
+        /*if (CurrentlyHeld.GetComponent<Rigidbody>() != null ) 
+            spring.connectedBody = toSet.GetComponent<Rigidbody>();*/
         GameManager.Instance.SetCursorConfined();
     }
     public void ReleaseHeld()
@@ -94,6 +94,9 @@ public class CenterPoint : MonoBehaviour
     {
         CreateNewBox.CauseFire(isCat);
     }
-
+    public void SetCanCreate(bool temp)
+    {
+        CreateNewBox.CanCreate = temp;
+    }
 
 }

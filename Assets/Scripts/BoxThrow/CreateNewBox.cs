@@ -9,6 +9,7 @@ public class CreateNewBox : MonoBehaviour
     public Light fireLight;
     private AudioSource catSource;
     public AudioClip[] clips;
+    public bool CanCreate = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,13 @@ public class CreateNewBox : MonoBehaviour
     }
     public void CreateBox()
     {
+        if (!CanCreate) return;
         int rand = Random.Range(0, BoxPrefabs.Length);
         GameObject temp = Instantiate(BoxPrefabs[rand], this.transform.position, Quaternion.identity);
         Vector3 pos = CenterPoint.instance.gameObject.transform.position;
         temp.GetComponent<BoxScript>().MoveToStart(new Vector3(pos.x, pos.y - 0.5f, pos.z));
         temp.GetComponent<BoxScript>().IsCat = RandomizeCat();
+        CanCreate = false;
     }
     private bool RandomizeCat()
     {

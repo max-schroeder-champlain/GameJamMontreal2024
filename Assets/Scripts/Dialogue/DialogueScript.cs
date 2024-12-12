@@ -17,7 +17,8 @@ public class DialogueScript : MonoBehaviour
     public GameObject box;
     public AudioClip[] audioclips;
     private AudioSource audioSource;
-     
+
+
     private void Start()
     {
         //Name.text = CharacterName;
